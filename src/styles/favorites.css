@@ -1,0 +1,20 @@
+.fav-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  display: flex; align-items: center; gap: 16px;
+  padding: 14px;
+}
+.fav-thumb {
+  width: 48px; height: 68px;
+  background: var(--bg-elevated);
+  border-radius: var(--radius-sm);
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text-muted); font-size: 10px;
+  overflow: hidden;
+}
+.fav-info { flex: 1; }
+.fav-title { font-size: 14px; font-weight: 600; color: var(--text-primary); margin-bottom: 4px; }
+.fav-meta { font-size: 12px; color: var(--text-muted); display: flex; gap: 10px; align-items: center; }
+.fav-actions { display: flex; gap: 8px; }

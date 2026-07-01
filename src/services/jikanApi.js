@@ -34,6 +34,10 @@ export function getAnimeCharacters(id) {
   return fetchJson(`${JIKAN_BASE}/anime/${id}/characters`)
 }
 
+export function getCharactersList(page = 1) {
+  return fetchJson(`${JIKAN_BASE}/characters?order_by=favorites&sort=desc&page=${page}`)
+}
+
 export function getCharacterById(id) {
   return fetchJson(`${JIKAN_BASE}/characters/${id}`)
 }
