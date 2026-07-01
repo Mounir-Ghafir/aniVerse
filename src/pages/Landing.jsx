@@ -32,13 +32,19 @@ function Landing() {
           </div>
         </div>
         <div className="hero-visual">
-          <div className="hero-card" style={{ borderColor: "rgba(43,116,224,0.3)", fontSize: 11, color: "var(--accent)" }}>
-            Featured anime
-          </div>
-          <div className="hero-card" />
-          <div className="hero-card" />
-          <div className="hero-card" />
-          <div className="hero-card" />
+          {trending.slice(0, 5).map((anime, i) => (
+            <Link to={`/anime/${anime.mal_id}`} key={anime.mal_id}
+              className="hero-card"
+              style={{
+                ...(i === 0 ? { borderColor: "rgba(43,116,224,0.3)", color: "var(--accent)" } : {}),
+                backgroundImage: `url(${anime.images.jpg.image_url})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+            >
+  
+            </Link>
+          ))}
         </div>
       </div>
 
@@ -59,7 +65,7 @@ function Landing() {
                 <div className="card-body">
                   <div className="card-title">{anime.title}</div>
                   <div className="card-meta">
-                    <span className="score">&starf; {anime.score}</span>
+                    <span className="score">★ {anime.score ?? "—"}</span>
                   </div>
                 </div>
               </Link>
@@ -82,7 +88,7 @@ function Landing() {
                 <div className="card-body">
                   <div className="card-title">{anime.title}</div>
                   <div className="card-meta">
-                    <span className="score">&starf; {anime.score}</span>
+                    <span className="score">★ {anime.score ?? "—"}</span>
                   </div>
                 </div>
               </Link>
