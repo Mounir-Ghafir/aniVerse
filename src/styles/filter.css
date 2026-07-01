@@ -1,0 +1,13 @@
+.filter-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+.filter-pill {
+  padding: 5px 14px; border-radius: 20px;
+  font-size: 12px; font-weight: 500;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  cursor: pointer; background: transparent;
+}
+.filter-pill.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}

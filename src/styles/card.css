@@ -1,0 +1,48 @@
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+.card-img {
+  width: 100%; aspect-ratio: 3/4;
+  background: var(--bg-elevated);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text-muted); font-size: 11px;
+  position: relative; overflow: hidden;
+}
+.card-img img { width: 100%; height: 100%; object-fit: cover; }
+.card-body { padding: 12px; }
+.card-title {
+  font-size: 13px; font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  margin-bottom: 6px;
+}
+.card-meta { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+
+.anime-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 16px;
+}
+
+.score {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 12px; font-weight: 700;
+  color: var(--amber); background: var(--amber-light);
+  padding: 2px 8px; border-radius: 20px;
+}
+
+.badge {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 11px; font-weight: 600;
+  padding: 3px 8px; border-radius: 20px;
+}
+.badge-muted { background: var(--bg-elevated); color: var(--text-secondary); }
+.badge-accent   { background: var(--accent-light);  color: var(--accent-hover); }
+.badge-teal     { background: var(--teal-light);    color: var(--teal); }
+.badge-amber    { background: var(--amber-light);   color: var(--amber); }
+.badge-rose     { background: var(--rose-light);    color: var(--rose); }
+.badge-purple   { background: var(--purple-light);  color: var(--purple); }
+.badge-green    { background: var(--green-light);   color: var(--green); }

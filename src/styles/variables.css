@@ -1,0 +1,39 @@
+:root {
+  --bg-page:       #0D0F18;
+  --bg-card:       #151822;
+  --bg-card-hover: #1C2030;
+  --bg-elevated:   #1E2235;
+  --bg-input:      #111420;
+
+  --accent:        #2B74E0;
+  --accent-hover:  #3A86F5;
+  --accent-light:  rgba(43,116,224,0.15);
+  --accent-glow:   rgba(43,116,224,0.08);
+
+  --teal:          #18B89A;
+  --teal-light:    rgba(24,184,154,0.15);
+  --amber:         #E8A020;
+  --amber-light:   rgba(232,160,32,0.15);
+  --rose:          #E0405A;
+  --rose-light:    rgba(224,64,90,0.15);
+  --purple:        #9B6DFF;
+  --purple-light:  rgba(155,109,255,0.15);
+  --green:         #3DBE7A;
+  --green-light:   rgba(61,190,122,0.15);
+
+  --text-primary:   #EAECF5;
+  --text-secondary: #8891AA;
+  --text-muted:     #555D78;
+  --text-on-accent: #FFFFFF;
+
+  --border:         rgba(255,255,255,0.07);
+  --border-strong:  rgba(255,255,255,0.13);
+
+  --radius-sm:  6px;
+  --radius-md:  10px;
+  --radius-lg:  14px;
+  --radius-xl:  20px;
+
+  --font-display: 'Nunito', sans-serif;
+  --font-body:    'Inter', sans-serif;
+}

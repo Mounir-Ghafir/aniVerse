@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom"
 import Navbar from "./components/ui/Navbar"
-import "./App.css"
+import "./styles/index.css"
 import Landing from "./pages/Landing"
 import AnimeList from "./pages/AnimeList"
 import AnimeDetails from "./pages/AnimeDetails"

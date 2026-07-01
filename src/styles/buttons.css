@@ -1,0 +1,11 @@
+.btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 9px 18px; border-radius: var(--radius-md);
+  font-size: 13px; font-weight: 600; cursor: pointer; border: none;
+  text-decoration: none;
+}
+.btn-primary { background: var(--accent); color: #fff; }
+.btn-secondary { background: var(--bg-elevated); color: var(--text-primary); border: 1px solid var(--border-strong); }
+.btn-ghost { background: transparent; color: var(--text-secondary); border: 1px solid var(--border); }
+.btn-sm { padding: 5px 12px; font-size: 12px; }
+.btn-teal { background: var(--teal); color: #fff; }
