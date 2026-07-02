@@ -1,22 +1,26 @@
 {
   "favorites": [
     {
-      "id": 1,
-      "anime_id": 5,
-      "title": "Cowboy Bebop",
-      "image": "https://api.jikan.moe/images/anime/1/16398.jpg",
-      "score": 8.75,
-      "addedAt": "2026-07-02T10:00:00Z"
-    },
-    {
-      "id": 2,
-      "anime_id": 1,
-      "title": "Fullmetal Alchemist: Brotherhood",
-      "image": "https://api.jikan.moe/images/anime/1/16590.jpg",
-      "score": 9.1,
-      "addedAt": "2026-07-02T09:30:00Z"
+      "anime_id": 8,
+      "title": "Bouken Ou Beet",
+      "image": "https://cdn.myanimelist.net/images/anime/7/21569.jpg",
+      "score": 6.97,
+      "addedAt": "2026-07-02T09:12:53.216Z",
+      "id": "bQBYen31aOU"
     }
   ],
   "library": [],
-  "rating": []
+  "rating": [
+    {
+      "anime_id": 8,
+      "title": "Bouken Ou Beet",
+      "image": "https://cdn.myanimelist.net/images/anime/7/21569.jpg",
+      "score": 8,
+      "note": "",
+      "createdAt": "2026-07-02T09:12:47.981Z",
+      "updatedAt": "2026-07-02T09:12:49.716Z",
+      "id": "iqXoy-aqLVE"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
