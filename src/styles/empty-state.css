@@ -1,7 +1,7 @@
 .empty-state {
   text-align: center; padding: 64px 24px;
-  color: var(--text-muted);
+  color: var(--c-washi-dark);
 }
-.empty-state-icon { font-size: 40px; margin-bottom: 16px; opacity: 0.5; }
-.empty-state-title { font-size: 16px; font-weight: 600; color: var(--text-secondary); margin-bottom: 8px; }
+.empty-state-icon { font-size: 40px; margin-bottom: 16px; opacity: 0.6; }
+.empty-state-title { font-size: 16px; font-weight: 600; color: var(--c-washi); margin-bottom: 8px; font-family: var(--font-display); }
 .empty-state-desc { font-size: 13px; line-height: 1.6; }

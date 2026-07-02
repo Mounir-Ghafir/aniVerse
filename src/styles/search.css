@@ -1,14 +1,15 @@
 .search-bar {
   display: flex; align-items: center; gap: 12px;
-  background: var(--bg-card);
-  border: 1px solid var(--border-strong);
-  border-radius: var(--radius-lg);
+  background: var(--c-aizuri-dark);
+  border: var(--border-width) solid var(--c-sumi);
+  border-radius: var(--radius);
   padding: 12px 20px;
   margin-bottom: 24px;
 }
 .search-bar input {
   background: none; border: none; outline: none;
-  font-size: 15px; color: var(--text-primary);
+  font-size: 15px; color: var(--c-washi);
   flex: 1;
+  font-family: var(--font-body);
 }
-.search-bar input::placeholder { color: var(--text-muted); }
+.search-bar input::placeholder { color: var(--c-washi-dark); }

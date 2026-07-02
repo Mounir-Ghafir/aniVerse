@@ -3,9 +3,9 @@ import useFetch from "../hooks/useFetch"
 import { getAnimeCharacters, getAnimeById } from "../services/jikanApi"
 
 function roleBadge(role) {
-  if (role === "Main") return "badge-accent"
-  if (role === "Supporting") return "badge-muted"
-  return "badge-rose"
+  if (role === "Main") return "badge-favorite"
+  if (role === "Supporting") return "badge-plan"
+  return "badge-completed"
 }
 
 function AnimeCharacters() {
@@ -20,7 +20,7 @@ function AnimeCharacters() {
     return (
       <div className="section">
         <div className="section-header">
-          <div className="skeleton" style={{ height: 18, width: 300, borderRadius: 6 }} />
+          <div className="section-title">Characters</div>
         </div>
         <div className="char-grid">
           {Array.from({ length: 6 }).map((_, i) => (
@@ -40,13 +40,11 @@ function AnimeCharacters() {
   if (error) {
     return (
       <div className="section">
-        <div className="card">
-          <div className="empty-state">
-            <div className="empty-state-icon" style={{ color: "var(--rose)" }}>⚠</div>
-            <div className="empty-state-title">Something went wrong</div>
-            <div className="empty-state-desc">Could not load characters. Try again later.</div>
-            <Link to={`/anime/${id}`} className="btn btn-secondary btn-sm" style={{ marginTop: 16, display: "inline-flex" }}>← Back to anime</Link>
-          </div>
+        <div className="empty-state">
+          <div className="empty-state-icon">⚠</div>
+          <div className="empty-state-title">Something went wrong</div>
+          <div className="empty-state-desc">Could not load characters. Try again later.</div>
+          <Link to={`/anime/${id}`} className="btn btn-outline btn-sm" style={{ marginTop: 16, display: "inline-flex" }}>← Back to anime</Link>
         </div>
       </div>
     )
@@ -56,21 +54,19 @@ function AnimeCharacters() {
     <div className="section">
       <div className="section-header">
         <div className="section-title">Characters{anime ? ` — ${anime.title}` : ""}</div>
-        <Link to={`/anime/${id}`} className="btn btn-ghost btn-sm">← Back to anime</Link>
+        <Link to={`/anime/${id}`} className="btn btn-outline btn-sm">← Back to anime</Link>
       </div>
 
       {characters.length === 0 ? (
-        <div className="card">
-          <div className="empty-state">
-            <div className="empty-state-icon">◎</div>
-            <div className="empty-state-title">No characters found</div>
-            <div className="empty-state-desc">No character data is available for this anime.</div>
-          </div>
+        <div className="empty-state">
+          <div className="empty-state-icon">◎</div>
+          <div className="empty-state-title">No characters found</div>
+          <div className="empty-state-desc">No character data is available for this anime.</div>
         </div>
       ) : (
         <div className="char-grid">
           {characters.map((entry) => (
-            <Link to={`/characters/${entry.character.mal_id}`} key={entry.character.mal_id} className="char-card" style={{ textDecoration: "none" }}>
+            <Link to={`/characters/${entry.character.mal_id}`} key={entry.character.mal_id} className="char-card">
               <div className="char-avatar">
                 <img src={entry.character.images.jpg.image_url} alt={entry.character.name} loading="lazy" />
               </div>

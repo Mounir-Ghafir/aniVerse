@@ -113,9 +113,9 @@ function AnimeList() {
       {loading ? (
         <div className="anime-grid">
           {Array.from({ length: 6 }).map((_, i) => (
-            <div className="card" key={i}>
-              <div className="skeleton" style={{ aspectRatio: "3/4" }} />
-              <div className="card-body">
+            <div className="anime-card" key={i}>
+              <div className="skeleton" style={{ aspectRatio: "2/3" }} />
+              <div className="anime-card-body">
                 <div className="skeleton" style={{ height: 12, borderRadius: 4, marginBottom: 8 }} />
                 <div className="skeleton" style={{ height: 10, borderRadius: 4, width: "60%" }} />
               </div>
@@ -123,30 +123,26 @@ function AnimeList() {
           ))}
         </div>
       ) : error ? (
-        <div className="card">
-          <div className="empty-state">
-            <div className="empty-state-icon" style={{ color: "var(--rose)" }}>⚠</div>
-            <div className="empty-state-title">Something went wrong</div>
-            <div className="empty-state-desc">{error}</div>
-            <button className="btn btn-secondary btn-sm" style={{ marginTop: 16 }} onClick={fetchAnime}>
-              Try again
-            </button>
-          </div>
+        <div className="empty-state">
+          <div className="empty-state-icon">⚠</div>
+          <div className="empty-state-title">Something went wrong</div>
+          <div className="empty-state-desc">{error}</div>
+          <button className="btn btn-secondary btn-sm" style={{ marginTop: 16 }} onClick={fetchAnime}>
+            Try again
+          </button>
         </div>
       ) : anime.length === 0 ? (
-        <div className="card">
-          <div className="empty-state">
-            <div className="empty-state-icon">◎</div>
-            <div className="empty-state-title">No anime found</div>
-            <div className="empty-state-desc">Try adjusting your search or filters to find what you&apos;re looking for.</div>
-            <button
-              className="btn btn-primary btn-sm"
-              style={{ marginTop: 16 }}
-              onClick={() => { setActiveSearch(""); setSearchQuery(""); setSelectedGenreId(null); setCurrentPage(1) }}
-            >
-              Clear filters
-            </button>
-          </div>
+        <div className="empty-state">
+          <div className="empty-state-icon">◎</div>
+          <div className="empty-state-title">No anime found</div>
+          <div className="empty-state-desc">Try adjusting your search or filters to find what you&apos;re looking for.</div>
+          <button
+            className="btn btn-primary btn-sm"
+            style={{ marginTop: 16 }}
+            onClick={() => { setActiveSearch(""); setSearchQuery(""); setSelectedGenreId(null); setCurrentPage(1) }}
+          >
+            Clear filters
+          </button>
         </div>
       ) : (
         <>

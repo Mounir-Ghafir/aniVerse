@@ -120,7 +120,7 @@ function AnimeDetails() {
     return (
       <div className="section">
         <div className="details-hero">
-          <div className="skeleton" style={{ aspectRatio: "3/4", borderRadius: "var(--radius-lg)" }} />
+          <div className="skeleton" style={{ aspectRatio: "3/4", borderRadius: "var(--radius)" }} />
           <div>
             <div className="skeleton" style={{ height: 28, width: "60%", borderRadius: 6, marginBottom: 12 }} />
             <div className="skeleton" style={{ height: 14, width: "40%", borderRadius: 4, marginBottom: 24 }} />
@@ -134,13 +134,11 @@ function AnimeDetails() {
   if (error || !anime) {
     return (
       <div className="section">
-        <div className="card">
-          <div className="empty-state">
-            <div className="empty-state-icon" style={{ color: "var(--rose)" }}>⚠</div>
-            <div className="empty-state-title">Something went wrong</div>
-            <div className="empty-state-desc">{error ?? "Could not load anime details."}</div>
-            <Link to="/anime" className="btn btn-secondary btn-sm" style={{ marginTop: 16, display: "inline-flex" }}>Back to anime list</Link>
-          </div>
+        <div className="empty-state">
+          <div className="empty-state-icon">⚠</div>
+          <div className="empty-state-title">Something went wrong</div>
+          <div className="empty-state-desc">{error ?? "Could not load anime details."}</div>
+          <Link to="/anime" className="btn btn-outline btn-sm" style={{ marginTop: 16, display: "inline-flex" }}>Back to anime list</Link>
         </div>
       </div>
     )
@@ -152,24 +150,23 @@ function AnimeDetails() {
     <>
       <div className="details-hero">
         <div className="details-poster">
-          <img src={anime.images.jpg.large_image_url ?? anime.images.jpg.image_url} alt={anime.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+          <img src={anime.images.jpg.large_image_url ?? anime.images.jpg.image_url} alt={anime.title} />
         </div>
         <div className="details-info">
-          <div style={{ marginBottom: 8 }}>
-            <span className="badge badge-accent">{anime.type ?? "TV"}</span>
-            &nbsp;
-            <span className={`badge ${anime.status === "Finished Airing" ? "badge-teal" : "badge-amber"}`}>{anime.status}</span>
+          <div style={{ marginBottom: 8, display: "flex", gap: 8, flexWrap: "wrap" }}>
+            <span className="tag">{anime.type ?? "TV"}</span>
+            <span className={`badge ${anime.status === "Finished Airing" ? "badge-completed" : "badge-watching"}`}>{anime.status}</span>
           </div>
           <div className="details-title">{anime.title}</div>
           {anime.title_japanese && <div className="details-title-jp">{anime.title_japanese}</div>}
           <div className="details-tags">
             {anime.genres?.map((g) => (
-              <span key={g.mal_id} className="badge badge-muted">{g.name}</span>
+              <span key={g.mal_id} className="tag">{g.name}</span>
             ))}
           </div>
           <div className="details-stats">
             <div className="stat">
-              <div className="stat-value amber">{anime.score ?? "—"}</div>
+              <div className="stat-value">{anime.score ?? "—"}</div>
               <div className="stat-label">Score</div>
             </div>
             <div className="stat">
@@ -177,7 +174,7 @@ function AnimeDetails() {
               <div className="stat-label">Episodes</div>
             </div>
             <div className="stat">
-              <div className="stat-value teal">{year}</div>
+              <div className="stat-value">{year}</div>
               <div className="stat-label">Year</div>
             </div>
             {anime.rank && (
@@ -189,13 +186,13 @@ function AnimeDetails() {
           </div>
           <p className="synopsis">{anime.synopsis ?? "No synopsis available."}</p>
           <div className="details-actions">
-            <button className={`btn ${isFavorited ? "btn-ghost" : "btn-primary"}`} onClick={handleToggleFavorite} disabled={busy}>
+            <button className={`btn ${isFavorited ? "btn-outline" : "btn-primary"}`} onClick={handleToggleFavorite} disabled={busy}>
               {isFavorited ? "♥ Remove from favorites" : "♡ Add to favorites"}
             </button>
-            <button className="btn btn-teal" onClick={handleLibraryAction} disabled={busy}>
+            <button className="btn btn-secondary" onClick={handleLibraryAction} disabled={busy}>
               {existingLibrary ? "+ Update library" : "+ Add to library"}
             </button>
-            <Link to={`/anime/${anime.mal_id}/characters`} className="btn btn-secondary">View characters →</Link>
+            <Link to={`/anime/${anime.mal_id}/characters`} className="btn btn-outline">View characters →</Link>
           </div>
         </div>
       </div>
@@ -209,7 +206,7 @@ function AnimeDetails() {
                 <iframe
                   src={anime.trailer.embed_url}
                   title="Trailer"
-                  style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: "none", borderRadius: "var(--radius-lg)" }}
+                  style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: "none", borderRadius: "var(--radius)" }}
                   allowFullScreen
                 />
               </div>
@@ -218,20 +215,16 @@ function AnimeDetails() {
 
           <div className="rating-widget">
             <div className="rating-label">Your rating</div>
-            <div className="rating-stars">
+            <div className="rating-row">
               {Array.from({ length: 10 }).map((_, i) => (
-                <span
+                <div
                   key={i}
-                  className={`star ${i < ratingScore ? "" : "empty"}`}
+                  className={`rating-dot ${i < ratingScore ? "filled" : ""}`}
                   style={{ cursor: "pointer" }}
                   onClick={() => setRatingScore(i + 1)}
-                >
-                  ★
-                </span>
+                />
               ))}
-              <span style={{ marginLeft: 8, fontSize: 14, fontWeight: 700, color: "var(--amber)" }}>
-                {ratingScore || "—"} / 10
-              </span>
+              <span className="rating-score-display">{ratingScore || "—"} / 10</span>
             </div>
             <div className="rating-note">
               <div className="rating-label">Personal note</div>
@@ -246,7 +239,7 @@ function AnimeDetails() {
                 {existingRating ? "Update rating" : "Save rating"}
               </button>
               {existingRating && (
-                <button className="btn btn-ghost btn-sm" onClick={handleDeleteRating} disabled={busy}>Delete</button>
+                <button className="btn btn-outline btn-sm" onClick={handleDeleteRating} disabled={busy}>Delete</button>
               )}
             </div>
           </div>
@@ -303,7 +296,7 @@ function AnimeDetails() {
               {existingLibrary ? "Update status" : "Add to library"}
             </button>
             {existingLibrary && (
-              <button className="btn btn-ghost btn-sm" style={{ width: "100%", justifyContent: "center", marginTop: 6, color: "var(--rose)" }} onClick={handleRemoveFromLibrary} disabled={busy}>
+              <button className="btn btn-outline btn-sm" style={{ width: "100%", justifyContent: "center", marginTop: 6, color: "var(--c-beni)" }} onClick={handleRemoveFromLibrary} disabled={busy}>
                 Remove from library
               </button>
             )}

@@ -8,6 +8,7 @@ async function fetchJson(url) {
 
 export function getTrending() {
   return fetchJson(`${JIKAN_BASE}/top/anime?filter=bypopularity`)
+
 }
 
 export function getSeasonal() {
@@ -15,15 +16,15 @@ export function getSeasonal() {
 }
 
 export function getAnimeList(page = 1) {
-  return fetchJson(`${JIKAN_BASE}/anime?page=${page}`)
+  return fetchJson(`${JIKAN_BASE}/anime?page=${page}&limit=24`)
 }
 
 export function searchAnime(query, page = 1) {
-  return fetchJson(`${JIKAN_BASE}/anime?q=${encodeURIComponent(query)}&page=${page}`)
+  return fetchJson(`${JIKAN_BASE}/anime?q=${encodeURIComponent(query)}&page=${page}&limit=24`)
 }
 
 export function getAnimeByGenre(genreId, page = 1) {
-  return fetchJson(`${JIKAN_BASE}/anime?genres=${genreId}&page=${page}`)
+  return fetchJson(`${JIKAN_BASE}/anime?genres=${genreId}&page=${page}&limit=24`)
 }
 
 export function getAnimeById(id) {
@@ -35,7 +36,7 @@ export function getAnimeCharacters(id) {
 }
 
 export function getCharactersList(page = 1) {
-  return fetchJson(`${JIKAN_BASE}/characters?order_by=favorites&sort=desc&page=${page}`)
+  return fetchJson(`${JIKAN_BASE}/characters?order_by=favorites&sort=desc&page=${page}&limit=24`)
 }
 
 export function getCharacterById(id) {

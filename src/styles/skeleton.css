@@ -1,6 +1,6 @@
 .skeleton {
-  background: var(--bg-elevated);
-  border-radius: var(--radius-sm);
+  background: var(--c-aizuri-light);
+  border-radius: var(--radius);
   animation: pulse 1.6s ease-in-out infinite;
 }
 @keyframes pulse {

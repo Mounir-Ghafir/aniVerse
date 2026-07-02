@@ -30,9 +30,9 @@ function CharactersList() {
         </div>
         <div className="anime-grid">
           {Array.from({ length: 12 }).map((_, i) => (
-            <div className="card" key={i}>
-              <div className="skeleton" style={{ aspectRatio: "3/4" }} />
-              <div className="card-body">
+            <div className="anime-card" key={i}>
+              <div className="skeleton" style={{ aspectRatio: "2/3" }} />
+              <div className="anime-card-body">
                 <div className="skeleton" style={{ height: 12, borderRadius: 4 }} />
               </div>
             </div>
@@ -45,12 +45,10 @@ function CharactersList() {
   if (error) {
     return (
       <div className="section">
-        <div className="card">
-          <div className="empty-state">
-            <div className="empty-state-icon" style={{ color: "var(--rose)" }}>⚠</div>
-            <div className="empty-state-title">Something went wrong</div>
-            <div className="empty-state-desc">Could not load characters. Try again later.</div>
-          </div>
+        <div className="empty-state">
+          <div className="empty-state-icon">⚠</div>
+          <div className="empty-state-title">Something went wrong</div>
+          <div className="empty-state-desc">Could not load characters. Try again later.</div>
         </div>
       </div>
     )
@@ -63,23 +61,21 @@ function CharactersList() {
       </div>
 
       {characters.length === 0 ? (
-        <div className="card">
-          <div className="empty-state">
-            <div className="empty-state-icon">◎</div>
-            <div className="empty-state-title">No characters found</div>
-            <div className="empty-state-desc">There are no characters to display right now.</div>
-          </div>
+        <div className="empty-state">
+          <div className="empty-state-icon">◎</div>
+          <div className="empty-state-title">No characters found</div>
+          <div className="empty-state-desc">There are no characters to display right now.</div>
         </div>
       ) : (
         <>
           <div className="anime-grid">
             {characters.map((c) => (
-              <Link to={`/characters/${c.mal_id}`} key={c.mal_id} className="card" style={{ textDecoration: "none" }}>
-                <div className="card-img">
+              <Link to={`/characters/${c.mal_id}`} key={c.mal_id} className="anime-card">
+                <div className="anime-card-image-frame">
                   <img src={c.images.jpg.image_url} alt={c.name} loading="lazy" />
                 </div>
-                <div className="card-body">
-                  <div className="card-title">{c.name}</div>
+                <div className="anime-card-body">
+                  <div className="anime-card-title">{c.name}</div>
                 </div>
               </Link>
             ))}

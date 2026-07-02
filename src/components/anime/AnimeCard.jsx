@@ -4,18 +4,20 @@ function AnimeCard({ anime }) {
   const year = anime.year ?? (anime.aired?.from ? new Date(anime.aired.from).getFullYear() : "—")
 
   return (
-    <Link to={`/anime/${anime.mal_id}`} className="card" style={{ textDecoration: "none" }}>
-      <div className="card-img">
+    <Link to={`/anime/${anime.mal_id}`} className="anime-card">
+      <div className="anime-card-image-frame">
         <img src={anime.images.jpg.image_url} alt={anime.title} loading="lazy" />
+        <div className="anime-card-score">{anime.score ?? "—"}</div>
       </div>
-      <div className="card-body">
-        <div className="card-title">{anime.title}</div>
-        <div className="card-meta">
-          <span className="score">★ {anime.score ?? "—"}</span>
+      <div className="anime-card-body">
+        <div className="anime-card-title">{anime.title}</div>
+        <div className="anime-card-meta">
+          <span>{anime.type ?? "TV"}</span>
+          <span>·</span>
+          <span>{anime.episodes ? `${anime.episodes} ep` : "—"}</span>
         </div>
         <div style={{ display: "flex", gap: 6, marginTop: 6, flexWrap: "wrap" }}>
-          {anime.episodes && <span className="badge badge-muted">{anime.episodes} eps</span>}
-          <span className="badge badge-muted">{year}</span>
+          <span className="tag">{year}</span>
         </div>
       </div>
     </Link>

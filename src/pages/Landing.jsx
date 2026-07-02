@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { getTrending, getSeasonal } from "../services/jikanApi"
+import AnimeCard from "../components/anime/AnimeCard"
 
 function Landing() {
   const [trending, setTrending] = useState([])
@@ -20,55 +21,30 @@ function Landing() {
   return (
     <>
       <div className="hero">
-        <div className="hero-text">
-          <div className="hero-eyebrow">Your anime universe</div>
-          <h1 className="hero-title">Discover &amp; track<br />every <span>anime</span></h1>
-          <p className="hero-desc">
-            Explore thousands of anime titles, manage your personal library, rate what you watch, and follow your favorites — all in one place.
-          </p>
+        <svg className="hero-wave" viewBox="0 0 1200 140" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0,90 C150,40 250,130 400,80 C550,30 650,120 800,70 C950,20 1050,110 1200,60 L1200,140 L0,140 Z" fill="#12233F"/>
+          <path d="M0,110 C180,70 300,140 450,100 C600,60 700,130 850,90 C1000,50 1100,120 1200,90 L1200,140 L0,140 Z" fill="#1D3557"/>
+        </svg>
+        <div className="hero-content">
+          <h1 className="hero-title">AniVerse</h1>
           <div className="hero-actions">
-            <Link to="/anime" className="btn btn-primary">Explore anime &rarr;</Link>
-            <Link to="/my-library" className="btn btn-secondary">My library</Link>
+            <Link to="/anime" className="btn btn-primary">Explore Anime →</Link>
+            <Link to="/my-library" className="btn btn-outline">My Library</Link>
           </div>
-        </div>
-        <div className="hero-visual">
-          {trending.slice(0, 5).map((anime, i) => (
-            <Link to={`/anime/${anime.mal_id}`} key={anime.mal_id}
-              className="hero-card"
-              style={{
-                ...(i === 0 ? { borderColor: "rgba(43,116,224,0.3)", color: "var(--accent)" } : {}),
-                backgroundImage: `url(${anime.images.jpg.image_url})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-              }}
-            >
-  
-            </Link>
-          ))}
         </div>
       </div>
 
       <div className="section">
         <div className="section-header">
           <div className="section-title">Trending now</div>
-          <Link to="/anime" className="btn btn-ghost btn-sm">View all &rarr;</Link>
+          <Link to="/anime" className="btn btn-outline btn-sm">View all →</Link>
         </div>
         {loading ? (
-          <div style={{ color: "var(--text-muted)", textAlign: "center", padding: 40 }}>Loading...</div>
+          <div style={{ color: "var(--c-washi-dark)", textAlign: "center", padding: 40 }}>Loading...</div>
         ) : (
           <div className="anime-grid">
             {trending.map((anime) => (
-              <Link to={`/anime/${anime.mal_id}`} key={anime.mal_id} className="card" style={{ textDecoration: "none" }}>
-                <div className="card-img">
-                  <img src={anime.images.jpg.image_url} alt={anime.title} />
-                </div>
-                <div className="card-body">
-                  <div className="card-title">{anime.title}</div>
-                  <div className="card-meta">
-                    <span className="score">★ {anime.score ?? "—"}</span>
-                  </div>
-                </div>
-              </Link>
+              <AnimeCard key={anime.mal_id} anime={anime} />
             ))}
           </div>
         )}
@@ -81,17 +57,7 @@ function Landing() {
         {loading ? null : (
           <div className="anime-grid">
             {seasonal.map((anime) => (
-              <Link to={`/anime/${anime.mal_id}`} key={anime.mal_id} className="card" style={{ textDecoration: "none" }}>
-                <div className="card-img">
-                  <img src={anime.images.jpg.image_url} alt={anime.title} />
-                </div>
-                <div className="card-body">
-                  <div className="card-title">{anime.title}</div>
-                  <div className="card-meta">
-                    <span className="score">★ {anime.score ?? "—"}</span>
-                  </div>
-                </div>
-              </Link>
+              <AnimeCard key={anime.mal_id} anime={anime} />
             ))}
           </div>
         )}
